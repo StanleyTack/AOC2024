@@ -1,3 +1,6 @@
+DAY = 'day_2'
+
+
 def read_file(filename):
     """Reads the contents of a file and returns it as a list of lines."""
     with open(filename, 'r') as file:
@@ -6,14 +9,18 @@ def read_file(filename):
 
 def part_a():
     filename = 'sample.txt'
-    # filename = '../input.txt'
-    lines = read_file(filename)
-    pass
+    filename = f'../inputs/{DAY}_input.txt'
+    reports = read_file(filename)
+    count_safe = 0
+    print(f"{DAY} Part A: {count_safe}")
 
 def part_b():
-    # filename = 'sample.txt'
-    # filename = '../input.txt'
-    pass
+    filename = 'sample.txt'
+    filename = f'../inputs/{DAY}_input.txt'
+    reports = read_file(filename)
+    count_safe = 0
+    
+    print(f"{DAY} Part B: {count_safe}")
 
 def main():
     part_a()
