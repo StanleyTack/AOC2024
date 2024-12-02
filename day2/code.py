@@ -6,7 +6,7 @@ def read_file(filename):
         lines = file.readlines()
     return lines
 
-def checks(levels):
+def check_safe(levels):
     differences = []
     for i, level in enumerate(levels):
         if i == len(levels)-1:
@@ -25,40 +25,34 @@ def part_a():
     levels = []
     for report in reports:
         levels = list(map(int, report.split()))
-        safe = checks(levels)
+        safe = check_safe(levels)
         if safe:
             count_safe += 1
     print(f"{DAY} Part A: {count_safe}")
 
 def part_b():
-    # filename = 'sample.txt'
+    filename = 'sample.txt'
     filename = f'../inputs/{DAY}_input.txt'
-    lines = read_file(filename)
-    list1 = []
-    list2 = []
-    for line in lines:
-        chars = line.split()
-        list1.append(int(chars[0]))
-        list2.append(int(chars[1]))
-    similarities = []
-    counted = set()
-    for num1 in list1:
-        counted.add(num1)
-        num_count = 0
-        for num2 in list2:
-            if num2 == num1:
-                num_count += 1
-        similarities.append((num1, num_count))
-    sim_scores = []
-    for pair in similarities:
-        sim_score = pair[0] * pair[1]
-        sim_scores.append(sim_score)
-    print(f"{DAY} Part B: {sum(sim_scores)}")
-    # pass
+    reports = read_file(filename)
+    count_safe = 0
+    levels = []
+    for report in reports:
+        levels = list(map(int, report.split()))
+        safe = check_safe(levels)
+        if not safe:
+            for i, ele in enumerate(levels):
+                new_levels = levels.copy()
+                del new_levels[i]
+                safe = check_safe(new_levels)
+                if safe:
+                    break
+        if safe:
+            count_safe += 1
+    print(f"{DAY} Part B: {count_safe}")
 
 def main():
-    part_a()
-    # part_b()
+    # part_a()
+    part_b()
 
 if __name__ == "__main__":
     main()
