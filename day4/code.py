@@ -16,6 +16,11 @@ def find_xmas_reverse(line):
     matches = re.findall(r"XMAS", reversed_line)
     return len(matches)
 
+def find_mas(line):
+    matches = re.findall(r"MAS", line)
+    return len(matches)
+
+
 def shift_columns_up(lines):
     # Split the input strings into individual characters to form a 2D list
     matrix = [list(line) for line in lines]
@@ -127,27 +132,29 @@ def part_a():
 
 def part_b():
     # filename = 'sample.txt'
-    # filename = f'../inputs/{DAY}_input.txt'
-    # lines = read_file(filename)
-    # pairs = []
-    # single_line = ''
-    # for line in lines:
-    #     single_line += line
-    # data = find_patterns_and_positions(single_line)
-    # # print(data['do'])
-    # # print(data['dont'])
-    # print(f"\nDo: \n{data['do']}")
-    # print(f"\nDont: \n{data['dont']}")
-    # # print(f"\nAll pairs: \n{data['mul']}")
-    # pairs.extend(filter_mul_positions(data))
-    # print(f"\nIncluded pairs: \n{pairs}")
-    # result = sum([x * y for x, y in pairs])
-    # print(f"{DAY} Part B: {result}")
+    filename = f'../inputs/{DAY}_input.txt'
+    lines = read_file(filename)
+    mas_count = 0
+    # check diagonal /
+    shift_up_lines = shift_columns_up(lines)
+    for line in shift_up_lines:
+        mas_count += find_mas(line)
+        reversed_line = line[::-1]
+        mas_count += find_mas(reversed_line)
+    print(mas_count)
+    # check diagonal \
+    shift_down_lines = shift_columns_down(lines)
+    for line in shift_down_lines:
+        mas_count += find_mas(line)
+        reversed_line = line[::-1]
+        mas_count += find_mas(reversed_line)
+    xmas_count = int(mas_count / 2)
+    print(f"{DAY} Part B: {xmas_count}")
     pass
 
 def main():
-    part_a()
-    # part_b()
+    # part_a()
+    part_b()
 
 if __name__ == "__main__":
     main()
