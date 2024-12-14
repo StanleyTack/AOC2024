@@ -20,9 +20,14 @@ def split_lines(lines):
 
 
 def evaluate_line(lines):
+    def concat(a, b):
+        # Custom || operator to concatenate digits
+        return int(str(a) + str(b))
+
     ops = {
         '+': operator.add,
         '*': operator.mul,
+        '||':concat
     }
     sum_found = 0
 
