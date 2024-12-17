@@ -170,9 +170,9 @@ def part_a():
     print(f"{DAY} Part A: {trail_sum}")
 
 def part_b():
-    filename = 'sample.txt'
-    filename = 'sample2.txt'
-    filename = 'sample3.txt'
+    # filename = 'sample.txt'
+    # filename = 'sample2.txt'
+    # filename = 'sample3.txt'
     filename = f'../inputs/{DAY}_input.txt'
     lines = read_file(filename)
     grid = create_grid(lines)
@@ -180,9 +180,8 @@ def part_b():
     trailhead_coords, peak_coords = get_trailhead_peak_coords(grid)
     # find all possible paths from trailhead to peak. 
     paths = find_all_paths(grid)
-    trailhead_scores = count_unique_peaks_per_start(paths)
-    trail_sum = sum_trail_score(trailhead_scores)
-    print(f"{DAY} Part B: {trail_sum}")
+    trail_rating_sum = len(paths)
+    print(f"{DAY} Part B: {trail_rating_sum}")
 
 def main():
     # part_a()
