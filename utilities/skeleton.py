@@ -9,7 +9,7 @@ def read_file(filename):
 
 def part_a():
     filename = 'sample.txt'
-    filename = f'../inputs/{DAY}_input.txt'
+    # filename = f'../inputs/{DAY}_input.txt'
     lines = read_file(filename)
     count_safe = 0
     print(f"{DAY} Part A: {count_safe}")
@@ -23,7 +23,7 @@ def part_b():
 
 def main():
     part_a()
-    part_b()
+    # part_b()
 
 if __name__ == "__main__":
     main()

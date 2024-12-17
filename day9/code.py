@@ -56,9 +56,8 @@ def part_a():
     print(f"{DAY} Part A: {checksum}")
 
 def part_b():
-        # filename = 'sample.txt'
+    filename = 'sample.txt'
     filename = f'../inputs/{DAY}_input.txt'
-    # lines = ['12345']
     lines = read_file(filename)
     for line in lines:
         line_with_spaces, count_spaces = empty_spaces(line)
