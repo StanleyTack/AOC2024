@@ -9,14 +9,14 @@ def read_file(filename):
 
 def part_a():
     filename = 'sample.txt'
-    # filename = f'../inputs/{DAY}_input.txt'
+    # filename = f'../inputs/input_{DAY}.txt'
     lines = read_file(filename)
     count_safe = 0
     print(f"{DAY} Part A: {count_safe}")
 
 def part_b():
     filename = 'sample.txt'
-    filename = f'../inputs/{DAY}_input.txt'
+    # filename = f'../inputs/input_{DAY}.txt'
     lines = read_file(filename)
     count_safe = 0   
     print(f"{DAY} Part B: {count_safe}")
